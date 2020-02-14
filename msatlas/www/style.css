@@ -1,0 +1,44 @@
+@media (min-width: 1200px) {
+  .container {
+    width: 1000px;
+  }
+}
+
+blockquote {
+    font-size: 14px;
+}
+
+.text{
+    max-width: 55%;
+}
+
+.fa-1-5x {
+  font-size: 1.5em !important;
+}
+
+#modelTabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#modelTabs > li {
+  width: 100%;
+}
+
+.toc {
+  display: table;
+}
+
+.toc > ul,
+.toc > ol {
+  margin: 0;
+}
+
+.page-header {
+  margin: 20px 0 20px 0;
+}
+
+#bereich {
+    background-color: yellow;
+    border: 3px red solid;
+}
