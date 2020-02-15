@@ -1,4 +1,4 @@
-FROM r-base:3.5.2
+FROM r-base:3.6.0
 MAINTAINER Tobias Frisch "frisch@imada.sdu.dk"
 
 EXPOSE 3838
