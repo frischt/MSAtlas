@@ -9,5 +9,9 @@ The MS Atlas is able to visualize differentially expressed genes and extract mec
 
 # docker build
 
-1) ```docker build msatlas```
-2) ```docker run ???``` 
+The webservice can be build and run with docker, based on the following commands:
+
+1) ```docker build -t msatlas .```
+2) ```docker run -p 3844:3838 msatlas``` 
+
+Afterwards, the website can be opened in a browser ```http://127.0.0.1:3844/```. Please replace the local port 3844 with any free port on your machine. 
