@@ -74,7 +74,8 @@ server <- function(input, output, session) {
                         rl_reg = input$RL_REG, fdr = as.numeric(input$FDR),
                         logFC = as.numeric(input$logFC),
                         allFC = (input$LOGFC_ALL == "all"),
-                        allFDR = (input$FDR_ALL) == "all")
+                        allFDR = ((input$FDR_ALL) == "all"),
+                        n_genes = as.numeric(input$n_genes))
     
     #deal with NA and duplicated row names!
     rownames(a) = make.names(a[,2], unique = T)

@@ -196,7 +196,8 @@ generateHeatMap <- function(dataset,
                             fdr = 0.05,
                             logFC = 0,
                             allFC = F,
-                            allFDR = F){
+                            allFDR = F,
+                            n_genes = 1/0){
   print("function: generateHeatMap")
   
   newSubset = subsetData(dataset = dataset, al = al, il = il, ca = ca,
@@ -260,7 +261,14 @@ generateHeatMap <- function(dataset,
     }
   }
   
-  return(newSubset[rows,])
+  newSubset = newSubset[rows,]
+  
+  if(is.finite(n_genes) && n_genes < sum(rows)){
+    maxLogTwo = apply(newSubset, 1, function(x){max(x)})
+    newSubset = newSubset[order(maxLogTwo, decreasing = T)[1:n_genes],]
+  }
+  
+  return(newSubset)
 }
 
 

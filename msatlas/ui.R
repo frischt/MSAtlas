@@ -52,7 +52,7 @@ heatNetPane2 <- sidebarPanel(
   fluidRow(
     column(12, checkboxInput("adjust_colors", "Adjust Color Range")),
     column(12, checkboxInput("row_dendogram", "Dendogram")),
-    column(12, textInput("n_genes", "N most sign genes", value = "inf"))
+    column(12, textInput("n_genes", "N most significant genes", value = "inf"))
   ),
   fluidRow(
     conditionalPanel(condition = "input.inTabset==2",
