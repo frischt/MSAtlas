@@ -5,7 +5,9 @@ library(plotly)
 library(shinycssloaders)
 library(plyr)
 library(heatmaply)
-library(threejs)
+#library(threejs)
+require(visNetwork)
+require(igraph)
 
 mychoices = c("0","1","2","3","4","5","6","7")
 
@@ -122,7 +124,7 @@ ui <- navbarPage("Multiple Sclerosis Gene Atlas", id = "navID", theme = "style.c
                             mainPanel(id = "mainPanel", heigth = "100%",
                               tabsetPanel(type = "pills",
                                 tabPanel("HeatMap", value = "1", plotlyOutput("heatMap", height = "750px") %>% withSpinner()),
-                                tabPanel("Network", value = "2", scatterplotThreeOutput("network", height = "750px") %>% withSpinner()),
+                                tabPanel("Network", value = "2", visNetworkOutput("network", height = "750px") %>% withSpinner()),
                                 tabPanel("Volcano", value = "3", plotlyOutput("volcano", height = "750px") %>% withSpinner()),
                                 id = "inTabset",
                                 selected = "1"

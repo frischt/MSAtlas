@@ -158,7 +158,7 @@ server <- function(input, output, session) {
   observeEvent(input$applyToNetwork, ignoreInit = T, ignoreNULL = T, {
     print("observeEvent input applyToNetwork")
     
-    output$network <- renderScatterplotThree({
+    output$network <- renderVisNetwork({
       generateselectedNetwork()
       print("output$network")
       
@@ -168,7 +168,9 @@ server <- function(input, output, session) {
       l = layout_with_fr(selectedNetwork, dim = 3)
       
       #graphjs object
-      graphjs(g = selectedNetwork, layout = l, showLabels = T)
+      #graphjs(g = selectedNetwork, layout = l, showLabels = T)
+      data = toVisNetworkData(selectedNetwork)
+      visNetwork(nodes = data$nodes, edges = data$edges)
     })
   })
   
@@ -305,7 +307,7 @@ server <- function(input, output, session) {
       }
     })
     
-    output$network <- renderScatterplotThree({
+    output$network <- renderVisNetwork({
       
       print("output$network")
       
@@ -315,7 +317,9 @@ server <- function(input, output, session) {
       l = layout_with_fr(selectedNetwork, dim = 3)
       
       #graphjs object
-      graphjs(g = selectedNetwork, layout = l, showLabels = T)
+      #graphjs(g = selectedNetwork, layout = l, showLabels = T)
+      data = toVisNetworkData(selectedNetwork)
+      visNetwork(nodes = data$nodes, edges = data$edges)
     })
   })
   
@@ -385,7 +389,7 @@ server <- function(input, output, session) {
       }
     })
     
-    output$network <- renderScatterplotThree({
+    output$network <- renderVisNetwork({
       
       print("output$network")
       
@@ -395,7 +399,9 @@ server <- function(input, output, session) {
       l = layout_with_fr(selectedNetwork, dim = 3)
       
       #graphjs object
-      graphjs(g = selectedNetwork, layout = l, showLabels = T)
+      #graphjs(g = selectedNetwork, layout = l, showLabels = T)
+      data = toVisNetworkData(selectedNetwork)
+      visNetwork(nodes = data$nodes, edges = data$edges)
     })
   })
   
