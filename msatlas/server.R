@@ -273,14 +273,14 @@ server <- function(input, output, session) {
                   labCol = colnames(selectedSet))
       }else if(ncol(selectedSet) < 2){
         print("3")
-        heatmaply(as.data.frame(selectedSet[clusterOrder,]), Rowv = F, Colv = F,
+        heatmaply(as.data.frame(selectedSet[clusterOrder,]), Rowv = isolate(input$row_dendogram), Colv = F,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet)[clusterOrder], 
                   labCol = colnames(selectedSet))
         
       }else{
         print("4")
-        heatmaply(selectedSet[clusterOrder,], Rowv = F, Colv = T,
+        heatmaply(selectedSet[clusterOrder,], Rowv = isolate(input$row_dendogram), Colv = T,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet[clusterOrder,]), 
                   labCol = colnames(selectedSet))
@@ -341,14 +341,14 @@ server <- function(input, output, session) {
                   labCol = colnames(selectedSet))
       }else if(ncol(selectedSet) < 2){
         print("3")
-        heatmaply(as.data.frame(selectedSet[clusterOrder,]), Rowv = F, Colv = F,
+        heatmaply(as.data.frame(selectedSet[clusterOrder,]), Rowv = isolate(input$row_dendogram), Colv = F,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet)[clusterOrder], 
                   labCol = colnames(selectedSet))
         
       }else{
         print("4")
-        heatmaply(selectedSet[clusterOrder,], Rowv = F, Colv = T,
+        heatmaply(selectedSet[clusterOrder,], Rowv = isolate(input$row_dendogram), Colv = T,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet[clusterOrder,]), 
                   labCol = colnames(selectedSet))
