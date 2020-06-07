@@ -252,7 +252,14 @@ server <- function(input, output, session) {
     
     myLimits=NULL
     if(isolate(input$adjust_colors)){
+      minValue = as.numeric(isolate(input$range_min))
+      maxValue = as.numeric(isolate(input$range_max))
       myLimits = global_limits
+      if(!is.na(minValue))
+        myLimits[1] = minValue
+      
+      if(!is.na(maxValue))
+        myLimits[2] = maxValue
     }
     
     generateselectedNetwork()
@@ -337,7 +344,14 @@ server <- function(input, output, session) {
       
       myLimits = NULL
       if(isolate(input$adjust_colors)){
+        minValue = as.numeric(isolate(input$range_min))
+        maxValue = as.numeric(isolate(input$range_max))
         myLimits = global_limits
+        if(!is.na(minValue))
+          myLimits[1] = minValue
+        
+        if(!is.na(maxValue))
+          myLimits[2] = maxValue
       }
       
       if(nrow(selectedSet) < 2 && ncol(selectedSet) < 2){

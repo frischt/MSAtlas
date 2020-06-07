@@ -50,7 +50,9 @@ heatNetPane2 <- sidebarPanel(
   ),
   tags$hr(style="border-color: black; margin-top: 0.1em; margin-bottom: 0.5em"),
   fluidRow(
-    column(12, checkboxInput("adjust_colors", "Adjust Color Range")),
+    column(4, checkboxInput("adjust_colors", "Adjust Color")),
+    column(4, textInput("range_min", "min")),
+    column(4, textInput("range_max", "max")),
     column(12, checkboxInput("row_dendogram", "Dendogram")),
     column(12, textInput("n_genes", "N most significant genes", value = "inf"))
   ),
