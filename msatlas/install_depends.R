@@ -1,5 +1,2 @@
 library("devtools")
-install.packages(c('visNetwork', 'igraph', 'ggplot2', 'conflicted', 'calibrate', 'shinycssloaders', 'shinyLP', 'plyr', 'gplots', 'RCurl','rjson','foreach','markdown'), repos='https://cran.rstudio.com/')
-install_version("heatmaply", version = "0.15.0", repos = "http://cran.us.r-project.org")
-install_version("shiny", version = "1.1.0", repos = "http://cran.us.r-project.org")
-install_version("plotly", version = "4.7.1", repos = "http://cran.us.r-project.org")
+install.packages(c('visNetwork', 'heatmaply', 'shiny', 'plotly', 'igraph', 'ggplot2', 'conflicted', 'calibrate', 'shinycssloaders', 'shinyLP', 'plyr', 'gplots', 'RCurl','rjson','foreach','markdown'), repos='https://cran.rstudio.com/')
