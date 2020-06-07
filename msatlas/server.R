@@ -257,9 +257,9 @@ server <- function(input, output, session) {
     
     myLimits=NULL
     if(isolate(input$adjust_colors)){
+      myLimits = rep(max(abs(range(selectedSet, na.rm = T))), 2)
       minValue = as.numeric(isolate(input$range_min))
       maxValue = as.numeric(isolate(input$range_max))
-      myLimits = global_limits
       if(!is.na(minValue))
         myLimits[1] = minValue
       
@@ -349,11 +349,12 @@ server <- function(input, output, session) {
         return(NULL)
       }
       
-      myLimits = NULL
+      myLimits=NULL
       if(isolate(input$adjust_colors)){
+        myLimits = rep(max(abs(range(selectedSet, na.rm = T))), 2)
+        myLimits[1] = -myLimits[1]
         minValue = as.numeric(isolate(input$range_min))
         maxValue = as.numeric(isolate(input$range_max))
-        myLimits = global_limits
         if(!is.na(minValue))
           myLimits[1] = minValue
         
