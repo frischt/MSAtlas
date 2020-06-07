@@ -18,6 +18,8 @@ myJoinedData[,tmpCols][is.na(myJoinedData[, tmpCols])] = 0
 
 myJoinedData$`Gene Symbol` <- ifelse(is.na(myJoinedData$`Gene Symbol`), myJoinedData$Ensemble, myJoinedData$`Gene Symbol`)
 myJoinedData$`Gene Symbol` <- ifelse(myJoinedData$`Gene Symbol` == "NA", myJoinedData$Ensemble, myJoinedData$`Gene Symbol`)
+
+global_limits = range(myJoinedData[,tmpCols], na.rm = T)
 #######################################################
 # solving the directory problem
 #######################################################
@@ -248,6 +250,11 @@ server <- function(input, output, session) {
       clusterOrder <<- NULL
     }
     
+    myLimits=NULL
+    if(isolate(input$adjust_colors)){
+      myLimits = global_limits
+    }
+    
     generateselectedNetwork()
     
     output$heatMap <- renderPlotly({
@@ -265,26 +272,26 @@ server <- function(input, output, session) {
         heatmaply(selectedSet, Rowv = F, Colv = F,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet), 
-                  labCol = colnames(selectedSet))
+                  labCol = colnames(selectedSet), limits = myLimits)
       }else if(nrow(selectedSet) < 2){
         print("2")
         heatmaply(selectedSet, Rowv = F, Colv = T,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet), 
-                  labCol = colnames(selectedSet))
+                  labCol = colnames(selectedSet), limits = myLimits)
       }else if(ncol(selectedSet) < 2){
         print("3")
         heatmaply(as.data.frame(selectedSet[clusterOrder,]), Rowv = isolate(input$row_dendogram), Colv = F,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet)[clusterOrder], 
-                  labCol = colnames(selectedSet))
+                  labCol = colnames(selectedSet), limits = myLimits)
         
       }else{
         print("4")
         heatmaply(selectedSet[clusterOrder,], Rowv = isolate(input$row_dendogram), Colv = T,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet[clusterOrder,]), 
-                  labCol = colnames(selectedSet))
+                  labCol = colnames(selectedSet), limits = myLimits)
       }
     })
     
@@ -328,31 +335,36 @@ server <- function(input, output, session) {
         return(NULL)
       }
       
+      myLimits = NULL
+      if(isolate(input$adjust_colors)){
+        myLimits = global_limits
+      }
+      
       if(nrow(selectedSet) < 2 && ncol(selectedSet) < 2){
         print("1")
         heatmaply(selectedSet, Rowv = F, Colv = F,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet), 
-                  labCol = colnames(selectedSet))
+                  labCol = colnames(selectedSet), limits = myLimits)
       }else if(nrow(selectedSet) < 2){
         print("2")
         heatmaply(selectedSet, Rowv = F, Colv = T,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet), 
-                  labCol = colnames(selectedSet))
+                  labCol = colnames(selectedSet), limits = myLimits)
       }else if(ncol(selectedSet) < 2){
         print("3")
         heatmaply(as.data.frame(selectedSet[clusterOrder,]), Rowv = isolate(input$row_dendogram), Colv = F,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet)[clusterOrder], 
-                  labCol = colnames(selectedSet))
+                  labCol = colnames(selectedSet), limits = myLimits)
         
       }else{
         print("4")
         heatmaply(selectedSet[clusterOrder,], Rowv = isolate(input$row_dendogram), Colv = T,
                   c("blue", "grey", "red"), 
                   labRow = rownames(selectedSet[clusterOrder,]), 
-                  labCol = colnames(selectedSet))
+                  labCol = colnames(selectedSet), limits = myLimits)
       }
     })
     
