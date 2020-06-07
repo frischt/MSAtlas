@@ -43,11 +43,16 @@ heatNetPane2 <- sidebarPanel(
     column(6, radioButtons("FDR_ALL", label = "",
                            choices = c("at least one", "all")))
   ),
-  
   fluidRow(
     column(6, textInput("logFC", "abs(logFC) >", value = "0")),
     column(6, radioButtons("LOGFC_ALL", label = "",
                            choices = c("at least one", "all")))
+  ),
+  tags$hr(style="border-color: black; margin-top: 0.1em; margin-bottom: 0.5em"),
+  fluidRow(
+    column(12, checkboxInput("adjust_colors", "Adjust Color Range")),
+    column(12, checkboxInput("row_dendogram", "Dendogram")),
+    column(12, textInput("n_genes", "N most sign genes", value = "inf"))
   ),
   fluidRow(
     conditionalPanel(condition = "input.inTabset==2",
