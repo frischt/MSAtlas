@@ -138,10 +138,6 @@ server <- function(input, output, session) {
         V(localNetwork)$size = 5
       }
       
-      if(vcount(localNetwork) <= 1){
-        print("adding dummi verticy")
-        localNetwork = add_vertices(localNetwork,1,name="dummi",label="", color="white", size=0)
-      }
       if(vcount(localNetwork) <= 0){
         showNotification("The network you have selected is empty. There are two possible reasons: (1) The genes that you selected are not part of our network or (2) we where 
                          not able to find connected components within the network. Please consider to change parameters for the network enrichment process to solve the problem.", type = "warning")
